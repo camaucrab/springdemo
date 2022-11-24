@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/customer")
+@RequestMapping(value = "/customer", produces="application/json")
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
@@ -48,14 +48,14 @@ public class CustomerController {
     }
 
     @PostMapping(value = "/create-customer")
-    public String getCustomer(@RequestBody Customer customer) {
+    public ResponseBean getCustomer(@RequestBody Customer customer) {
         Customer resCustomer = customerService.saveCustomer(customer);
         List<Customer> customerList = new ArrayList<>();
         customerList.add(resCustomer);
 
         ResponseBean response = new ResponseBean();
         response.success(customerList);
-        return response.toString();
+        return response;
 
     }
 }
