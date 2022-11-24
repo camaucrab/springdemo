@@ -1,0 +1,11 @@
+{
+  "code": 200,
+  "message": "Success",
+  "data": [
+    {
+      "id": 12,
+      "firstname": "PHUOC7",
+      "lastname": "PLD"
+    }
+  ]
+}
