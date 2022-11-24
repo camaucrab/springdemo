@@ -30,7 +30,7 @@ jobs:
     - name: Build with Maven
       run: mvn -B package --file pom.xml -DskipTests
   Test:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: test
         run: whoami
