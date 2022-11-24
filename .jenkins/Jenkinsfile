@@ -2,6 +2,7 @@ node {
     def mvnHome
     stage('Getting Project') {
         git 'https://github.com/camaucrab/springdemo.git'
+        branch 'main'
         mvnHome = tool 'M3'
     }
     stage('Build Project') {
