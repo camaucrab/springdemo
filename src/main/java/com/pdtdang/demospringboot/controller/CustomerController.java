@@ -1,10 +1,8 @@
 package com.pdtdang.demospringboot.controller;
 
-import com.fasterxml.jackson.databind.util.JSONWrappedObject;
 import com.pdtdang.demospringboot.entity.Customer;
 import com.pdtdang.demospringboot.services.CustomerService;
 import com.pdtdang.demospringboot.ultis.ResponseBean;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,6 +22,15 @@ public class CustomerController {
         response.success(listCus);
         return response.toString();
     }
+    @GetMapping(value = "/filter")
+    public String getCustomer(@RequestParam String firstname) {
+
+        List<Customer> listCus = customerService.findCustomerByFirstName(firstname);
+
+        ResponseBean response = new ResponseBean();
+        response.success(listCus);
+        return response.toString();
+    }
 
     @GetMapping(value = "/get-customer")
     public String getCustomer(@RequestParam int cusID) {
@@ -37,15 +44,6 @@ public class CustomerController {
         return response.toString();
     }
 
-    @GetMapping(value = "/filter")
-    public String getCustomer(@RequestParam String firstname) {
-
-        List<Customer> listCus = customerService.findCustomerByFirstName(firstname);
-
-        ResponseBean response = new ResponseBean();
-        response.success(listCus);
-        return response.toString();
-    }
 
     @PostMapping(value = "/create-customer")
     public ResponseBean getCustomer(@RequestBody Customer customer) {
@@ -58,4 +56,16 @@ public class CustomerController {
         return response;
 
     }
+    @PutMapping(value="/update-customer")
+    public ResponseBean updateCustomer(@RequestParam Customer customer) {
+
+        Customer resCustomer = customerService.updateCustomer(customer);
+        List<Customer> customerList = new ArrayList<>();
+        customerList.add(resCustomer);
+
+        ResponseBean response = new ResponseBean();
+        response.success(customerList);
+        return response;
+    }
+
 }

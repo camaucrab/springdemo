@@ -35,5 +35,11 @@ public class CustomerService {
         System.out.println("After Save: "+customer);
         return customer;
     }
+    public Customer updateCustomer(Customer cus) {
+        int cusID = repo.updateFirstnameById(cus.getFirstname(), cus.getId() );
+        System.out.println("After Save: "+cusID);
+        Optional<Customer> customer = repo.findById(cus.getId());
+        return customer.get();
+    }
 
 }
