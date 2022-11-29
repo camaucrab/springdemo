@@ -16,7 +16,7 @@ node {
     stage('Deploy on staging') {
         bat 'echo deploying on staging'
         bat '''
-            echo mvn -v
+            mvn -v
             echo pwd
         '''
     }
