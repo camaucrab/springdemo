@@ -34,9 +34,9 @@ node {
         }
     }
 
-    stage('Generate HTML report') {
+    stage('Generate Testing report') {
             cucumber buildStatus: 'STABLE',
-                    reportTitle: 'My report',
+                    reportTitle: 'Testing Report',
                     fileIncludePattern: '**/cucumber.json',
                     trendsLimit: 10,
                     classifications: [
