@@ -35,7 +35,7 @@ node {
 //     }
 
     stage('Generate HTML report') {
-            cucumber buildStatus: 'UNSTABLE',
+            cucumber buildStatus: 'STABLE',
                     reportTitle: 'My report',
                     fileIncludePattern: '**/cucumber.json',
                     trendsLimit: 10,
