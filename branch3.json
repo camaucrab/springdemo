@@ -1,3 +1,4 @@
 {
-"tets": "demo"
+  "test": "rebase from master"
+
 }
