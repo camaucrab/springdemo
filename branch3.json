@@ -1,4 +1,5 @@
 {
-  "test": "rebase from master"
+  "test": "rebase from master",
+  "demo": "branch 1 udpated"
 
 }
