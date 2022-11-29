@@ -1,15 +1,46 @@
 node {
     def mvnHome
     stage('Getting Project') {
-        git 'https://github.com/camaucrab/springdemo.git'
-        branch 'main'
+        git 'https://github.com/jglick/simple-maven-project-with-tests.git'
         mvnHome = tool 'M3'
     }
     stage('Build Project') {
-        mvnHome = tool 'M3'
-        bat 'mvn package -DskipTests'
+        bat 'echo hello'
     }
     stage('Push Project To Nexus') {
         bat 'echo hello'
+    }
+}
+node {
+    def mvnHome
+    stage('Deploy on staging') {
+        bat 'echo deploying on staging'
+        bat '''
+            echo mvn -v
+            echo pwd
+        '''
+    }
+
+}
+
+node {
+    def mvnHome
+    stage('Backup Current Deploy') {
+        bat 'echo hello'
+        params.REQUESTED_ACTION != 'SILENCE'
+    }
+    stage('Pull New Afrifact') {
+        bat 'echo hello'
+    }
+    stage('Update New Version') {
+        bat 'echo update new version'
+    }
+}
+node {
+    def mvnHome
+    stage('Verifing stage') {
+            echo "current build number: ${currentBuild.changeSets.toString() }"
+            echo "previous build number: ${currentBuild.previousBuild.getNumber()}"
+            echo "previous build number: ${currentBuild.previousBuild}"
     }
 }
