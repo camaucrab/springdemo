@@ -1,18 +1,3 @@
-// node {
-//     def mvnHome
-//     stage('Getting Project') {
-//         git 'https://github.com/camaucrab/springdemo.git'
-//         branch 'main'
-//         mvnHome = tool 'M3'
-//         sh 'mvn -v'
-//     }
-//     stage('Build Project') {
-//         bat 'mvn package -DskipTests'
-//     }
-//     stage('Push Project To Nexus') {
-//         bat 'echo hello'
-//     }
-// }
 node {
     def mvnHome
     stage('Preparation') { // for display purposes
