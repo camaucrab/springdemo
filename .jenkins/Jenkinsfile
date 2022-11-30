@@ -23,19 +23,31 @@ node {
         junit '**/target/surefire-reports/TEST-*.xml'
         archiveArtifacts 'target/*.jar'
     }
-    stage('Cucumber test ') {
+    stage('Run Unit Test ') {
         // Run the maven build
         withEnv(["MVN_HOME=$mvnHome"]) {
             if (isUnix()) {
-                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean test'
+                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean test -Dtest="com.pdtdang.demospringboot.**.**.**"
+'
             } else {
-                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean test/)
+                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean test -Dtest="com.pdtdang.demospringboot.**.**.**/)
+            }
+        }
+        buildStatus: 'STABLE'
+    }
+    stage('Run SIT Testing ') {
+        // Run the maven build
+        withEnv(["MVN_HOME=$mvnHome"]) {
+            if (isUnix()) {
+                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore test -Dtest="SIT.customer.**'
+            } else {
+                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore test -Dtest="SIT.customer.**/)
             }
         }
         buildStatus: 'STABLE'
     }
 
-    stage('Generate Testing report') {
+    stage('SIT Testing report') {
             cucumber buildStatus: 'STABLE',
                     reportTitle: 'Testing Report',
                     fileIncludePattern: '**/cucumber.json',
@@ -47,7 +59,7 @@ node {
                         ]
                     ]
     }
-    stage('Jococo report') {
+    stage('Test Coverage Report') {
             jacoco(
                   execPattern: 'target/*.exec',
                   classPattern: 'target/classes',
