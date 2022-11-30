@@ -14,8 +14,7 @@ public class Customer {
     @Column(name = "lastname")
     private String lastname;
 
-    public Customer(int id, String firstname, String lastname) {
-        this.id = id;
+    public Customer(String firstname, String lastname) {
         this.firstname = firstname;
         this.lastname = lastname;
     }
@@ -56,5 +55,7 @@ public class Customer {
                 ", \"lastname\":\"" + lastname + '\"' +
                 '}';
     }
+
+
 
 }
