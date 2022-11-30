@@ -1,25 +1,25 @@
 package com.pdtdang.demospringboot.services;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
+import org.mockito.Mock;
+import org.mockito.Mockito;
 
-import static org.junit.jupiter.api.Assertions.*;
+import java.util.ArrayList;
+import java.util.List;
 
-class CustomerServiceTest {
+public class CustomerServiceTest {
 
-    @BeforeEach
-    void setUp() {
-        System.out.println("Before Each");
-    }
+    @Mock
+    private CustomerService customerService;
 
-    @AfterEach
-    void tearDown() {
-        System.out.println("Teardown");
-    }
     @Test
-    void findById() {
-        System.out.println("Testing");
+    public void getAllCustomer() {
+//        List<Customer> cust = customerService.getAllCustomer();
+        List<String> listString = new ArrayList<>();
+        listString.add("String");
+        System.out.printf("Testing: ", listString);
+
     }
+
 
 }

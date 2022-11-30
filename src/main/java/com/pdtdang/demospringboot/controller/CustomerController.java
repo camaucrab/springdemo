@@ -22,6 +22,7 @@ public class CustomerController {
         response.success(listCus);
         return response.toString();
     }
+
     @GetMapping(value = "/filter")
     public String getCustomer(@RequestParam String firstname) {
 
