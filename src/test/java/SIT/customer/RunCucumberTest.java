@@ -1,4 +1,4 @@
-package com.pdtdang.demospringboot;
+package SIT.customer;
 
 import io.cucumber.junit.Cucumber;
 import io.cucumber.junit.CucumberOptions;
@@ -11,7 +11,7 @@ public class RunCucumberTest {
 
 	@BeforeClass
 	public static void beforeClass() {
-		System.out.println("Test");
+		System.out.println("This is cucumber Testing");
 //		RestAssured.basePath = "/api";
 //		RestAssured.config = RestAssuredConfig.newConfig()
 //				.decoderConfig(DecoderConfig.decoderConfig().defaultContentCharset("UTF-8"));

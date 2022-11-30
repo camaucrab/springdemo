@@ -1,4 +1,4 @@
-package com.pdtdang.demospringboot.customer;
+package SIT.customer;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
