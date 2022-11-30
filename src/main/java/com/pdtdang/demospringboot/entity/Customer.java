@@ -50,6 +50,7 @@ public class Customer {
 
     @Override
     public String toString() {
+
         return "{" +
                 "\"id\":" + id +
                 ", \"firstname\":\"" + firstname + '\"' +
