@@ -72,11 +72,6 @@
             <version>${cucumber.version}</version>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>junit</groupId>-->
-<!--            <artifactId>junit</artifactId>-->
-<!--            <version>${junit.version}</version>-->
-<!--        </dependency>-->
 
 
 <!--        Unit Test-->

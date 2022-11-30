@@ -66,4 +66,16 @@ node {
                   exclusionPattern: 'src/test*'
             )
     }
+    stage ('Test Performance') {
+        withEnv(["MVN_HOME=$mvnHome"]) {
+           if (isUnix()) {
+//                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore test -Dtest="SIT.customer.**'
+                    sh 'jmeter -v'
+           } else {
+
+//                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore test -Dtest="SIT.customer.**/)
+                    bat (/jmeter -v/)
+           }
+       }
+   }
 }
