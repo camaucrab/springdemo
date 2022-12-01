@@ -24,7 +24,7 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/filter")
-    public String getCustomer(@RequestParam String firstname) {
+    public String filterCustomer(@RequestParam String firstname) {
 
         List<Customer> listCus = customerService.findCustomerByFirstName(firstname);
 
@@ -34,7 +34,7 @@ public class CustomerController {
     }
 
     @GetMapping(value = "/get-customer")
-    public String getCustomer(@RequestParam int cusID) {
+    public String getCustomerById(@RequestParam int cusID) {
 
         Customer customer = customerService.findById(cusID);
         List<Customer> customers = new ArrayList<>();
@@ -47,7 +47,7 @@ public class CustomerController {
 
 
     @PostMapping(value = "/create-customer")
-    public ResponseBean getCustomer(@RequestBody Customer customer) {
+    public ResponseBean createCustomer(@RequestBody Customer customer) {
         Customer resCustomer = customerService.saveCustomer(customer);
         List<Customer> customerList = new ArrayList<>();
         customerList.add(resCustomer);
@@ -68,5 +68,6 @@ public class CustomerController {
         response.success(customerList);
         return response;
     }
+
 
 }

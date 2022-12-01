@@ -1,5 +1,8 @@
 package com.pdtdang.demospringboot.controller;
 
+import com.pdtdang.demospringboot.entity.Customer;
+import com.pdtdang.demospringboot.services.CustomerService;
+import com.pdtdang.demospringboot.ultis.ResponseBean;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,6 +12,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.List;
+
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
@@ -16,6 +21,9 @@ public class CustomerControllerTest {
 
     @Autowired
     CustomerController customerController;
+
+    @Autowired
+    CustomerService customerService;
 
     @Test
     public void shouldReturnDefaultMessage() throws Exception {
@@ -33,23 +41,38 @@ public class CustomerControllerTest {
     }
 
     @Test
+    public void testGetAllCustomer() {
+        String customerList = customerController.getAllCustomer();
+        System.out.println(customerList);
+
+    }
+
+    @Test
     public void getAllCustomer() {
-        customerController.getAllCustomer();
+        String response  = customerController.getAllCustomer();
     }
 
     @Test
-    public void getCustomer() {
+    public void filterCustomer() {
+        String response = customerController.filterCustomer("Phuoc");
     }
 
     @Test
-    public void testGetCustomer() {
+    public void getCustomerById() {
+        String response = customerController.getCustomerById(2);
     }
 
     @Test
-    public void testGetCustomer1() {
+    public void createCustomer() {
+        Customer cus = new Customer("Phuoc", "Dang");
+        ResponseBean response  = customerController.createCustomer(cus);
+
     }
 
     @Test
     public void updateCustomer() {
+        Customer exitCus = customerService.findById(3);
+        exitCus.setLastname("Update name customer 3");
+        customerController.updateCustomer(exitCus);
     }
 }
