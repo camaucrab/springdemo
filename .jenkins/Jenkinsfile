@@ -13,9 +13,9 @@ node {
         // Run the maven build
         withEnv(["MVN_HOME=$mvnHome"]) {
             if (isUnix()) {
-                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package -SkipTests'
+                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore clean package -DSkipTests'
             } else {
-                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package -SkipTests /)
+                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore clean package -DSkipTests /)
             }
         }
     }
