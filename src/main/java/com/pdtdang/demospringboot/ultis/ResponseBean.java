@@ -14,7 +14,7 @@ public class ResponseBean {
     }
 
     public int getCode() {
-        return code;
+        return this.code;
     }
 
     public void setCode(int code) {

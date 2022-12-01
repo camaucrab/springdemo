@@ -3,8 +3,10 @@ package com.pdtdang.demospringboot.ultis;
 import com.pdtdang.demospringboot.entity.Customer;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -13,9 +15,11 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 @SpringBootTest
+@RunWith(SpringRunner.class)
 public class ResponseBeanTest {
 
-    private ResponseBean responseBean;
+
+    private ResponseBean responseBean = new ResponseBean();
 
     @BeforeClass
     public static void beforeClass() throws Exception {
@@ -54,6 +58,8 @@ public class ResponseBeanTest {
         listCustomer.add(customer);
         responseBean.success(listCustomer);
         assertEquals(200, responseBean.getCode());
+        assertEquals("Success", responseBean.getMessage());
+
 
     }
 
