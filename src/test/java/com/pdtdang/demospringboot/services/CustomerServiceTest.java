@@ -53,10 +53,10 @@ public class CustomerServiceTest {
     }
 
     @Test
-    public void testCustomerServices () {ustomer.toString();
-
+    public void testCustomerServices () {
         Customer   customer = customerService.findById(2);
-        c        customer.getId();
+        customer.toString();
+        customer.getId();
         customer.getFirstname();
         customer.getLastname();
         customer.toString();
@@ -65,8 +65,10 @@ public class CustomerServiceTest {
         customer.setLastname("Changed Last Name");
         customerService.updateCustomer(customer);
 
-        customerService.saveCustomer(customer);
-        customerService.findCustomerByFirstName("Changed First Name");
+        Customer saveCustomer = customerService.saveCustomer(customer);
+        List<Customer> listCustomers = customerService.findCustomerByFirstName("Changed First Name");
+        System.out.println(saveCustomer);
+        System.out.println(listCustomers);
     }
 
 
