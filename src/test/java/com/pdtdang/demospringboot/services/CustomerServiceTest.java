@@ -52,6 +52,19 @@ public class CustomerServiceTest {
         assertEquals(21, allCustomer.size());
     }
 
+    @Test
+    public void testCustomerServices () {
+        Customer   customer = customerService.findById(2);
+        customer.toString();
+        customer.getId();
+        customer.getFirstname();
+        customer.getLastname();
+        customer.toString();
+        customer.getClass();
+        customer.setFirstname("Changed First Name");
+        customer.setLastname("Changed Last Name");
+        customerService.updateCustomer(customer);
+    }
 
 
 }
