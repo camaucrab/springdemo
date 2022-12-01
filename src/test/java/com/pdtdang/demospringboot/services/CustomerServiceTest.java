@@ -37,6 +37,9 @@ public class CustomerServiceTest {
         int res = customerService.demo(-1);
         assertEquals(0, res);
 
+        int res2 = customerService.demo(5);
+        assertEquals(1, res2);
+
     }
 
     @Test
