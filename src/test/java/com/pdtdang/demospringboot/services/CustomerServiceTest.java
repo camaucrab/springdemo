@@ -32,6 +32,12 @@ public class CustomerServiceTest {
         assertEquals(6, sum);
 
     }
+    @Test
+    public void demo() {
+        int res = customerService.demo(-1);
+        assertEquals(0, res);
+
+    }
 
     @Test
     public void getAllCustomer() {
