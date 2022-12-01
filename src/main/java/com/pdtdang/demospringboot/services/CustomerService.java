@@ -2,6 +2,7 @@ package com.pdtdang.demospringboot.services;
 
 import com.pdtdang.demospringboot.entity.Customer;
 import com.pdtdang.demospringboot.responsitories.CustomerResponsitory;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -44,12 +45,13 @@ public class CustomerService {
         System.out.println("After Save: "+customer);
         return customer;
     }
-    public Customer updateCustomer(Customer cus) {
+    public Customer updateCustomer(@NotNull Customer cus) {
         int cusID = repo.updateFirstnameById(cus.getFirstname(), cus.getId() );
         System.out.println("After Save: "+cusID);
         Optional<Customer> customer = repo.findById(cus.getId());
         return customer.get();
     }
+
     public int demo(int i) {
         if (i < 0) {
             return 0;

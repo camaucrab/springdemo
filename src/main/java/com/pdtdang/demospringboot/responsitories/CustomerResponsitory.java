@@ -32,7 +32,7 @@ public interface CustomerResponsitory extends CrudRepository<Customer, Integer> 
 
     @Transactional
     @Modifying
-    @Query(value = "update Customer c set c.firstname = ?1 where c.id = ?3", nativeQuery = true)
+    @Query(value = "update Customer c set c.firstname = ?1 where c.id = ?2")
     int updateFirstnameById(String firstname, int id);
 
 
