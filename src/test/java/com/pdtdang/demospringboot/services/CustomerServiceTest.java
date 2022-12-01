@@ -28,8 +28,8 @@ public class CustomerServiceTest {
 
     @Test
     public void evalue() {
-//        int sum = customerService.evaluate("1+2+3");
-//        assertEquals(6, sum);
+        int sum = customerService.evaluate("3");
+        assertEquals(6, sum);
 
     }
     @Test
