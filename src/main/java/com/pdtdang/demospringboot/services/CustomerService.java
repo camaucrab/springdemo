@@ -49,5 +49,12 @@ public class CustomerService {
         Optional<Customer> customer = repo.findById(cus.getId());
         return customer.get();
     }
+    public int demo(int i) {
+        if (i < 0) {
+            return 0;
+        } else {
+            return 1;
+        }
+    }
 
 }
