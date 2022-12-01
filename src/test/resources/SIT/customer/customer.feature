@@ -16,3 +16,5 @@ Feature: This is a feature
       | k1  | k2   | 3   |
       | k1  | k2   | 4   |
       | k1  | k2   | 5   |
+      | k1  | k2   | 6   |
+      | k1  | k2   | 7   |
