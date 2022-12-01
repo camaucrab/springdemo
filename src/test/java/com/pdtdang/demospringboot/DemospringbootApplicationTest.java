@@ -10,7 +10,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.*;
 
 
-
+@SpringBootTest
+@RunWith(SpringRunner.class)
 public class DemospringbootApplicationTest {
 
     @Test
