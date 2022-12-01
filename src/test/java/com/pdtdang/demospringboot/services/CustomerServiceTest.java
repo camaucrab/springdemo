@@ -72,4 +72,11 @@ public class CustomerServiceTest {
     }
 
 
+    @Test
+    public void findById() {
+        customerService.findCustomerByFirstName("");
+        customerService.toString();
+        customerService.getClass();
+//        customerService.
+    }
 }

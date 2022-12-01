@@ -22,11 +22,11 @@ public interface CustomerResponsitory extends CrudRepository<Customer, Integer> 
 
     List<Customer> findAll();
 
-    long count();
+//    long count();
 
-    void delete(Customer entity);
+//    void delete(Customer entity);
 
-    boolean existsById(Integer integer);
+//    boolean existsById(Integer integer);
 
     Customer save(Customer entity);
 
