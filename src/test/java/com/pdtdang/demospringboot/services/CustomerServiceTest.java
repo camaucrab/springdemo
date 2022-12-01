@@ -64,6 +64,9 @@ public class CustomerServiceTest {
         customer.setFirstname("Changed First Name");
         customer.setLastname("Changed Last Name");
         customerService.updateCustomer(customer);
+
+        customerService.saveCustomer(customer);
+        customerService.findCustomerByFirstName("Changed First Name");
     }
 
 
