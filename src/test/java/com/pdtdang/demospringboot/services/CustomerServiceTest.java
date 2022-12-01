@@ -29,7 +29,7 @@ public class CustomerServiceTest {
     @Test
     public void evalue() {
         int sum = customerService.evaluate("3+2");
-        assertEquals(6, sum);
+        assertEquals(5, sum);
 
     }
     @Test
