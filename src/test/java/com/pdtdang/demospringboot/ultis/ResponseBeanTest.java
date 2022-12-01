@@ -60,6 +60,14 @@ public class ResponseBeanTest {
         assertEquals(200, responseBean.getCode());
         assertEquals("Success", responseBean.getMessage());
 
+        responseBean.setMessage("Meso thanh cong");
+        responseBean.setCode(400);
+        responseBean.setData(null);
+
+        assertEquals(400, responseBean.getCode());
+        assertEquals("Meso thanh cong", responseBean.getMessage());
+        assertEquals(null, responseBean.getData());
+
 
     }
 
