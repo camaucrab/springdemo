@@ -59,6 +59,7 @@ public class CustomerControllerTest {
     public void updateCustomer() {
         Customer exitCus = customerService.findById(3);
         exitCus.setLastname("Update name customer 3");
-        customerController.updateCustomer(exitCus);
+        ResponseBean response  =  customerController.updateCustomer(exitCus);
+        System.out.println(response);
     }
 }
