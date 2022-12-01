@@ -1,16 +1,30 @@
 package com.pdtdang.demospringboot.services;
 
-import io.cucumber.java.it.Data;
+import com.pdtdang.demospringboot.entity.Customer;
+import com.pdtdang.demospringboot.responsitories.CustomerResponsitory;
+import org.junit.Before;
 import org.junit.Test;
-import org.springframework.boot.test.autoconfigure.data.jdbc.DataJdbcTest;
+import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.TestPropertySource;
+import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 
 @SpringBootTest
+@RunWith(SpringRunner.class)
+//@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK, classes = CustomerService.class)
+//@AutoConfigureMockMvc
+@TestPropertySource(locations = "classpath:application-integrationtest.properties")
 public class CustomerServiceTest {
-
-    private final CustomerService customerService = new CustomerService();
+    @Autowired
+    private CustomerService customerService;
 
     @Test
     public void evalue() {
@@ -18,10 +32,12 @@ public class CustomerServiceTest {
         assertEquals(6, sum);
 
     }
+
     @Test
     public void getAllCustomer() {
-//        System.out.printf("Testing Get All Customer: ", customerService.getAllCustomer());
-
+        System.out.printf("Testing Get All Customer: ", customerService.getAllCustomer());
+        List<Customer> allCustomer = customerService.getAllCustomer();
+        assertEquals(21, allCustomer.size());
     }
 
 
