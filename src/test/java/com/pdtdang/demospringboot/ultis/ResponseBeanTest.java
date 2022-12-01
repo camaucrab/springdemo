@@ -73,5 +73,7 @@ public class ResponseBeanTest {
 
     @Test
     public void testToString() {
+        responseBean.toString();
+        
     }
 }
