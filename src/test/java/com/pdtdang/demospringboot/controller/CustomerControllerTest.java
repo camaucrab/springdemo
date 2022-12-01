@@ -25,20 +25,6 @@ public class CustomerControllerTest {
     @Autowired
     CustomerService customerService;
 
-    @Test
-    public void shouldReturnDefaultMessage() throws Exception {
-//        this.mockMvc.perform(get("/customer/get-all-customer")).andDo(print()).andExpect(status().isOk())
-//                .andExpect(content().string(containsString("Hello, World")));
-//        System.out.printf("Testing mock Mvc: ",mockMvc.toString());
-    }
-
-    @Before
-    public void setUp() throws Exception {
-    }
-
-    @After
-    public void tearDown() throws Exception {
-    }
 
     @Test
     public void testGetAllCustomer() {
