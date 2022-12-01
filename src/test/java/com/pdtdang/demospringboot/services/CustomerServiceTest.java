@@ -79,4 +79,12 @@ public class CustomerServiceTest {
         customerService.getClass();
 //        customerService.
     }
+
+    @Test
+    public void testUpdateCustomer() {
+        Customer oldCus = customerService.findById(4);
+        oldCus.setLastname("Updated Last Name");
+        Customer newCus = customerService.updateCustomer(oldCus);
+        assertEquals("Updated Last Name", newCus.getLastname());
+    }
 }
