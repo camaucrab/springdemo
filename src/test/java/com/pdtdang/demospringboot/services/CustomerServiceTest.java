@@ -31,6 +31,9 @@ public class CustomerServiceTest {
         int sum = customerService.evaluate("3+2");
         assertEquals(5, sum);
 
+        int sum2= customerService.evaluate("3");
+        assertEquals(3, sum2);
+
     }
     @Test
     public void demo() {
