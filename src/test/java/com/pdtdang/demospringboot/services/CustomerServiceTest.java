@@ -53,10 +53,10 @@ public class CustomerServiceTest {
     }
 
     @Test
-    public void testCustomerServices () {
+    public void testCustomerServices () {ustomer.toString();
+
         Customer   customer = customerService.findById(2);
-        customer.toString();
-        customer.getId();
+        c        customer.getId();
         customer.getFirstname();
         customer.getLastname();
         customer.toString();
