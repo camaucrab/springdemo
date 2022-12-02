@@ -32,7 +32,7 @@ node {
         )
         cucumber buildStatus: 'STABLE',
                             reportTitle: 'Testing Report',
-                            fileIncludePattern: '**/cucumber.json',x
+                            fileIncludePattern: '**/cucumber.json'
                             trendsLimit: 10,
                             classifications: [
                                 [
