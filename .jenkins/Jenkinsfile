@@ -9,7 +9,7 @@ node {
         // **       in the global configuration.
         mvnHome = tool 'M3'
     }
-    stage('Build') {
+    stage('BUILD and TEST') {
         // Run the maven build
         withEnv(["MVN_HOME=$mvnHome"]) {
             if (isUnix()) {
@@ -21,7 +21,7 @@ node {
             }
         }
     }
-    stage('Build Results') {
+    stage('TEST Result') {
         junit '**/target/surefire-reports/TEST-*.xml'
         archiveArtifacts 'target/*.jar'
         jacoco(
@@ -32,7 +32,7 @@ node {
         )
         cucumber buildStatus: 'STABLE',
                             reportTitle: 'Testing Report',
-                            fileIncludePattern: '**/cucumber.json',
+                            fileIncludePattern: '**/cucumber.json',x
                             trendsLimit: 10,
                             classifications: [
                                 [
