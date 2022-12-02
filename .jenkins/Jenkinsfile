@@ -24,48 +24,64 @@ node {
     stage('Build Results') {
         junit '**/target/surefire-reports/TEST-*.xml'
         archiveArtifacts 'target/*.jar'
+        jacoco(
+              execPattern: 'target/*.exec',
+              classPattern: 'target/classes',
+              sourcePattern: 'src/main/java',
+              exclusionPattern: 'src/test*'
+        )
+        cucumber buildStatus: 'STABLE',
+                            reportTitle: 'Testing Report',
+                            fileIncludePattern: '**/cucumber.json',
+                            trendsLimit: 10,
+                            classifications: [
+                                [
+                                    'key': 'Browser',
+                                    'value': 'Firefox'
+                                ]
+                            ]
     }
-    stage('Run Unit Test ') {
-        // Run the maven build
-        withEnv(["MVN_HOME=$mvnHome"]) {
-            if (isUnix()) {
-                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore  test -Dtest="com.pdtdang.demospringboot.**.**.**"'
-            } else {
-                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore test -Dtest="com.pdtdang.demospringboot.**.**.**"/)
-            }
-        }
-        buildStatus: 'STABLE'
-    }
-    stage('Run SIT Testing ') {
-        // Run the maven build
-        withEnv(["MVN_HOME=$mvnHome"]) {
-            if (isUnix()) {
-                sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore test -Dtest="SIT.customer.**'
-            } else {
-                bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore test -Dtest="SIT.customer.**/)
-            }
-        }
-        buildStatus: 'STABLE'
-    }
-
-    stage('SIT Testing report') {
-            cucumber buildStatus: 'STABLE',
-                    reportTitle: 'Testing Report',
-                    fileIncludePattern: '**/cucumber.json',
-                    trendsLimit: 10,
-                    classifications: [
-                        [
-                            'key': 'Browser',
-                            'value': 'Firefox'
-                        ]
-                    ]
-    }
-    stage('Test Coverage Report') {
-            jacoco(
-                  execPattern: 'target/*.exec',
-                  classPattern: 'target/classes',
-                  sourcePattern: 'src/main/java',
-                  exclusionPattern: 'src/test*'
-            )
-    }
+//     stage('Run Unit Test ') {
+//         // Run the maven build
+//         withEnv(["MVN_HOME=$mvnHome"]) {
+//             if (isUnix()) {
+//                 sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore  test -Dtest="com.pdtdang.demospringboot.**.**.**"'
+//             } else {
+//                 bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore test -Dtest="com.pdtdang.demospringboot.**.**.**"/)
+//             }
+//         }
+//         buildStatus: 'STABLE'
+//     }
+//     stage('Run SIT Testing ') {
+//         // Run the maven build
+//         withEnv(["MVN_HOME=$mvnHome"]) {
+//             if (isUnix()) {
+//                 sh '"$MVN_HOME/bin/mvn" -Dmaven.test.failure.ignore test -Dtest="SIT.customer.**'
+//             } else {
+//                 bat(/"%MVN_HOME%\bin\mvn" -Dmaven.test.failure.ignore test -Dtest="SIT.customer.**/)
+//             }
+//         }
+//         buildStatus: 'STABLE'
+//     }
+//
+//     stage('SIT Testing report') {
+//             cucumber buildStatus: 'STABLE',
+//                     reportTitle: 'Testing Report',
+//                     fileIncludePattern: '**/cucumber.json',
+//                     trendsLimit: 10,
+//                     classifications: [
+//                         [
+//                             'key': 'Browser',
+//                             'value': 'Firefox'
+//                         ]
+//                     ]
+//     }
+//     stage('Test Coverage Report') {
+//             jacoco(
+//                   execPattern: 'target/*.exec',
+//                   classPattern: 'target/classes',
+//                   sourcePattern: 'src/main/java',
+//                   exclusionPattern: 'src/test*'
+//             )
+//     }
 }
